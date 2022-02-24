@@ -4,7 +4,6 @@ orbs:
   python: circleci/python@2.0
 
 jobs:
-
   test:
     docker:
       - image: cimg/python:3.10.2
@@ -14,7 +13,9 @@ jobs:
           keys: 
               - dev1-{{checksum "requirements.txt"}}
               - dev1-
-      - python/install-packages
+      - python/install-packages:
+          pkg-manager: pipenv
+          args: pytest
       - run:
           name: Run tests
           command: python -m pytest --junitxml=test-results.xml --cov
@@ -30,5 +31,4 @@ workflows:
   build-and-test:
     jobs:
       - python/test:
-          pkg-manager: pip
-          test-tool: pytest
+
