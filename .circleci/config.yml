@@ -29,4 +29,7 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - python/test
+      - python/test:
+          ags: --dev
+          pkg-manager: pip
+          test-tool: pytest
