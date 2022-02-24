@@ -30,6 +30,6 @@ workflows:
   build-and-test:
     jobs:
       - python/test:
-          ags: --dev
+          args: --dev
           pkg-manager: pip
           test-tool: pytest
