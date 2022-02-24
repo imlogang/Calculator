@@ -1,1 +1,1 @@
-from .calculator import ConversionRate
+from src.calculator import ConversionRate
