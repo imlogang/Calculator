@@ -14,9 +14,9 @@ jobs:
           python -m pytest --version
           mkdir workspace
       - persist_to_workspace:
-          root: workspace
+          root: ~/workspace
           paths:
-            - working
+            - ~/working
 
   test:
     docker:
