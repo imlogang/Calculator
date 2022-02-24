@@ -11,11 +11,18 @@ jobs:
       - checkout
       - python/install-packages
       - run: python -m pytest --version
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - working
 
   test:
     docker:
       - image: cimg/python:3.10.2
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
       - run:
           name: Run tests
           command: python -m pytest --junitxml=test-results.xml --cov
