@@ -11,11 +11,11 @@ jobs:
       - checkout
       - python/install-packages
       - run: python -m pytest --version
-      - run: mkdir ~/workspace
+      - run: mkdir -p workspace
       - persist_to_workspace:
-          root: ~/workspace
+          root: workspace
           paths:
-            - working
+            - echo-output
 
   test:
     docker:
