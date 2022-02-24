@@ -11,11 +11,11 @@ jobs:
       - checkout
       - python/install-packages
       - run: python -m pytest --version
-      - run: mkdir -p workspace
+      - run: mkdir ~/workspaces
       - persist_to_workspace:
-          root: .
+          root: ~/workspaces
           paths:
-            - workspace/*
+            - echo-output
 
   test:
     docker:
@@ -23,7 +23,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ./workspace
+          at: ~/workspaces
       - run:
           name: Run tests
           command: python -m pytest --junitxml=test-results.xml --cov
