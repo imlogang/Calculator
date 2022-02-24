@@ -11,18 +11,17 @@ jobs:
       - checkout
       - python/install-packages
       - run: python -m pytest --version
-      - run: mkdir -p workspace
       - persist_to_workspace:
-          root: workspace
+          root: .
           paths:
-            - echo-output
+            - workspace/*
 
   test:
     docker:
       - image: cimg/python:3.10.2
     steps:
       - attach_workspace:
-          at: workspace
+          at: ./workspace
       - checkout
       - run:
           name: Run tests
