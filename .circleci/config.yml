@@ -20,7 +20,10 @@ jobs:
       - store_test_results:
           path: test-results.xml
 workflows:
-  sample:
+  version: 2
+  TestCalculator:
     jobs:
       - build
-      - test
+      - test:
+        requires:
+            - build
