@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - python/install-packages
+      - run: python -m pytest --version
 
   test:
     docker:
@@ -17,7 +18,7 @@ jobs:
     steps:
       - run:
           name: Run tests
-          command: pytest --junitxml=test-results.xml --cov
+          command: python -m pytest --junitxml=test-results.xml --cov
       - store_test_results:
           path: test-results.xml
 
