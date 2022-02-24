@@ -12,7 +12,7 @@ jobs:
       - python/install-packages
       - run: python -m pytest --version
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: workspace
           paths:
             - working
 
@@ -21,7 +21,7 @@ jobs:
       - image: cimg/python:3.10.2
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: workspace
       - checkout
       - run:
           name: Run tests
