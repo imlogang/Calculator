@@ -10,9 +10,8 @@ jobs:
     steps:
       - checkout
       - python/install-packages
-      - run: | 
-          python -m pytest --version
-          mkdir workspace
+      - run: python -m pytest --version
+      - run: mkdir ~/workspace
       - persist_to_workspace:
           root: ~/workspace
           paths:
