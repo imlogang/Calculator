@@ -1,7 +1,7 @@
 import unittest
 import random
 import sys
-sys.path.append('./src')
+sys.path.append('../src')
 from src.calculator import ConversionRate
 
 class TestCalc(unittest.TestCase):
