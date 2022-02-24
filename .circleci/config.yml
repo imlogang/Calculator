@@ -4,21 +4,6 @@ orbs:
   python: circleci/python@2.0
 
 jobs:
-  build: 
-    docker:
-      - image: cimg/python:3.10.2
-    steps:
-      - checkout
-      - restore_cache:
-          keys: 
-              - dev1-{{checksum "requirements.txt"}}
-              - dev1-
-      - python/install-packages
-      - run: python -m pytest --version
-      - save_cache:
-          paths:
-            - .
-          key: dev1-{{checksum "requirements.txt"}}
 
   test:
     docker:
@@ -44,7 +29,4 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - python/test
