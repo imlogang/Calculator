@@ -30,6 +30,5 @@ workflows:
   build-and-test:
     jobs:
       - python/test:
-          args: --dev
           pkg-manager: pip
           test-tool: pytest
