@@ -1,6 +1,6 @@
 import unittest
 import random
-from src.calculator import ConversionRate
+from calculator import ConversionRate
 
 class TestCalc(unittest.TestCase):
     def test_int(self): 
