@@ -1,35 +1,15 @@
 version: 2.1
 
-orbs:
-  python: circleci/python@2.0
+jobs:
+  test:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout
 
-# jobs:
-#   test:
-#     docker:
-#       - image: cimg/python:3.10.2
-#     steps:
-#       - checkout
-#       - restore_cache:
-#           keys: 
-#               - dev1-{{checksum "requirements.txt"}}
-#               - dev1-
-#       - python/install-packages:
-#           pkg-manager: pipenv
-#           args: pytest
-#       - run:
-#           name: Run tests
-#           command: python -m pytest --junitxml=test-results.xml --cov
-#       - store_test_results:
-#           path: test-results.xml
-#       - save_cache:
-#           paths:
-#             - .
-#           key: dev1-{{checksum "requirements.txt"}}
 
 workflows:
-  version: 2
   build-and-test:
     jobs:
-      - python/test:
-         test-tool-args: --cov
+      - test
 
