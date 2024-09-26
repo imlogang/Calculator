@@ -4,8 +4,25 @@ jobs:
   test:
     docker:
       - image: cimg/python:3.10.2
+    resource_class: logan/container-runner
     steps:
       - checkout
+      - restore_cache:
+          keys: 
+              - dev1-{{checksum "requirements.txt"}}
+              - dev1-
+      - python/install-packages:
+          pkg-manager: pipenv
+          args: pytest
+      - run:
+          name: Run tests
+          command: python -m pytest --junitxml=test-results.xml --cov
+      - store_test_results:
+          path: test-results.xml
+      - save_cache:
+          paths:
+            - .
+          key: dev1-{{checksum "requirements.txt"}}
 
 
 workflows:
