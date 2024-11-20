@@ -5,10 +5,8 @@ orbs:
 
 jobs:
   test:
-    docker:
-      - image: cimg/python:3.10.2
-    #resource_class: logan/container-runner
-    resource_class: small
+    machine: true
+    resource_class: medium
     parallelism: 3
     steps:
       - checkout
