@@ -7,7 +7,6 @@ jobs:
   test:
     machine: true
     resource_class: medium
-    parallelism: 3
     steps:
       - checkout
       - restore_cache:
@@ -18,7 +17,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            TEST_FILES=$(circleci tests glob "**/tests/*.py" | circleci tests split --split-by=timings)
+            TEST_FILES=$(circleci tests glob "**/tests/*.py")
             python -m pytest $TEST_FILES --junitxml=test-results.xml --cov
       - store_test_results:
           path: test-results.xml
