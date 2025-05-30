@@ -14,12 +14,12 @@ jobs:
           keys: 
             - dev1-{{checksum "requirements.txt"}}
             - dev1-
-      - run: pip install -r requirements.txt 
+      - run: python3 -m pip install -r requirements.txt 
       - run:
           name: Run tests
           command: |
             TEST_FILES=$(circleci tests glob "**/tests/*.py" | circleci tests split --split-by=timings)
-            python -m pytest $TEST_FILES --junitxml=test-results.xml --cov
+            python3 -m pytest $TEST_FILES --junitxml=test-results.xml --cov
       - store_test_results:
           path: test-results.xml
       - save_cache:
