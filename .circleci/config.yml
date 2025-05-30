@@ -8,6 +8,7 @@ jobs:
     machine: true
     resource_class: logan/windows-runner
     parallelism: 3
+    working_directory: D:\
     steps:
       - checkout
       - restore_cache:
