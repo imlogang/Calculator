@@ -8,7 +8,7 @@ jobs:
     machine: true
     resource_class: logan/windows-runner
     parallelism: 3
-    working_directory: D:\
+    working_directory: "D:\Program Files\CircleCI\Workdir"
     steps:
       - checkout
       - restore_cache:
