@@ -6,9 +6,8 @@ orbs:
 jobs:
   test:
     machine: true
-    resource_class: logan/windows-runner
-    parallelism: 3
-    working_directory: D:\workdir
+    resource_class: large
+    parallelism: 1
     steps:
       - checkout
       - restore_cache:
