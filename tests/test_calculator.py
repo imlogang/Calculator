@@ -14,6 +14,8 @@ class TestCalc(unittest.TestCase):
 
         result = ConversionRate(Number1, Number2)
 
+        self.fail("forced failure")
+
         self.assertEqual(result, ExpectedValue)
     
     def test_float(self): 
