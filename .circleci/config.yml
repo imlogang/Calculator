@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            python3 -m pytest tests/test_calculator.py -v --no-header
+            python3 -m pytest tests/test_calculator.py --junitxml=test-results.xml --cov -v
       - store_test_results:
           path: test-results.xml
 
