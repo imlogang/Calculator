@@ -21,7 +21,7 @@ class TestCalc(unittest.TestCase):
         Number1 = random.random()
         Number2 = random.random()
 
-        ExpectedValue = Number1 + Number2
+        ExpectedValue = Number1 + Number2 + 3
 
         result = ConversionRate(Number1, Number2)
 
@@ -32,7 +32,7 @@ class TestCalc(unittest.TestCase):
         Number1 = random.uniform(0,1000000)
         Number2 = random.uniform(0,1000000)
 
-        ExpectedValue = Number1 + Number2
+        ExpectedValue = Number1 + Number2 + 3
 
         result = ConversionRate(Number1, Number2)
 
