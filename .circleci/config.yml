@@ -10,10 +10,6 @@ jobs:
     parallelism: 1
     steps:
       - checkout
-      - restore_cache:
-          keys: 
-            - dev1-{{checksum "requirements.txt"}}
-            - dev1-
       - run: python3 -m pip install -r requirements.txt 
       - run:
           name: Run tests
@@ -21,10 +17,6 @@ jobs:
             python3 -m pytest tests/test_calculator.py -v --no-header
       - store_test_results:
           path: test-results.xml
-      - save_cache:
-          paths:
-            - .
-          key: dev1-{{checksum "requirements.txt"}}
 
 workflows:
   build-and-test:
