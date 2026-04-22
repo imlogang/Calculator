@@ -16,7 +16,7 @@ class TestCalc(unittest.TestCase):
 
         self.fail("forced failure")
 
-        self.assertEqual(result, ExpectedValue)
+        self.assertEqual(1, 0)
     
     def test_float(self): 
 
