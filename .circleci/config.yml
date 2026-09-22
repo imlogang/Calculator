@@ -1,19 +1,12 @@
 version: 2.1
 
-orbs:
-  python: circleci/python@2.1.1
-
 jobs:
   test:
-    machine: true
-    resource_class: large
-    parallelism: 1
+    docker: 
+      - image: cimg/python:3.10
+    parallelism: q
     steps:
       - checkout
-      - restore_cache:
-          keys: 
-            - dev1-{{checksum "requirements.txt"}}
-            - dev1-
       - run: python3 -m pip install -r requirements.txt 
       - run:
           name: Run tests
@@ -22,10 +15,6 @@ jobs:
             python3 -m pytest $TEST_FILES --junitxml=test-results.xml --cov
       - store_test_results:
           path: test-results.xml
-      - save_cache:
-          paths:
-            - .
-          key: dev1-{{checksum "requirements.txt"}}
 
 workflows:
   build-and-test:
